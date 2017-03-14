@@ -19,9 +19,26 @@ else
   agent.cookie_jar.save(cookies_file, session: true)
 end
 
-my_courses = agent.get('https://moodle.itech-bs14.de/course/view.php?id=94')
+ae_page = agent.get('https://moodle.itech-bs14.de/course/index.php?categoryid=5')
 
-pp my_courses
+links = ae_page.search('a')
+hrefs = links.map do |link|
+  link.attribute('href').to_s
+end.uniq
+
+hrefs.each do |link|
+  p link
+end
+
+# lock_page = agent.get('https://moodle.itech-bs14.de/enrol/index.php?id=35')
+
+# p 'Add start id'
+# start_id = gets.chomp
+# p 'Add end_id'
+# end_id = gets.chomp
+
+
+
 
 # user_name = homepage.search('.usertext').text
 #

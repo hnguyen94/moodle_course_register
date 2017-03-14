@@ -3,7 +3,7 @@ moodle.itech-bs14.de:
   "/":
     MoodleSession: !ruby/object:Mechanize::Cookie
       name: MoodleSession
-      value: p4qn2j2kjf9cm24tjchk7iv9f4
+      value: i3scl5jkpd1fj13jd8rtlhcs24
       domain: moodle.itech-bs14.de
       for_domain: false
       path: "/"
@@ -11,5 +11,5 @@ moodle.itech-bs14.de:
       httponly: false
       expires: 
       max_age: 
-      created_at: 2017-03-14 12:36:05.741608000 +01:00
-      accessed_at: 2017-03-14 12:36:05.821938000 +01:00
+      created_at: 2017-03-14 14:21:30.645881000 +01:00
+      accessed_at: 2017-03-14 14:21:30.727279000 +01:00
