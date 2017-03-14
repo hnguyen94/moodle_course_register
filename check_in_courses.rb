@@ -1,22 +1,29 @@
 require 'pry'
-
 require 'mechanize'
-require 'logger'
 require 'dotenv/load'
 
-Logger.new('mechanize.log')
+agent = Mechanize.new
+agent.user_agent_alias = 'Mac Safari'
 
-agent = Mechanize.new do |agent|
-  agent.user_agent_alias = 'Mac Safari'
+cookies_file = 'cookies.yml'
+
+if File.exist?('cookies.yaml')
+  agent.cookie_jar.load('cookies.yaml')
+else
+  login_page = agent.get('https://moodle.itech-bs14.de/login/index.php')
+  login_form = login_page.form(action: 'https://moodle.itech-bs14.de/login/index.php')
+  login_form.field_with(id: 'username').value = ENV['username']
+  login_form.field_with(id: 'password').value = ENV['password']
+  login_form.submit
+
+  agent.cookie_jar.save(cookies_file, session: true)
 end
 
-login_page = agent.get('https://moodle.itech-bs14.de/login/index.php')
+my_courses = agent.get('https://moodle.itech-bs14.de/course/view.php?id=94')
 
-login_form = login_page.form(action: 'https://moodle.itech-bs14.de/login/index.php')
-login_form.field_with(id: 'username').value = ENV['username']
-login_form.field_with(id: 'password').value = ENV['password']
-page = login_form.submit
+pp my_courses
 
-
-user_name = page.search('.usertext').text
-p "Login successful! User: #{user_name}" unless user_name.empty?
+# user_name = homepage.search('.usertext').text
+#
+# if user_name != 0
+# end
