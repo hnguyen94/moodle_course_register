@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'pry'
+require 'pry-byebug'
 require 'mechanize'
 require 'dotenv/load'
 
@@ -42,6 +43,7 @@ href.each do |link|
   end
 end
 
+# TODO: Check credentials
 # lock_page = agent.get('https://moodle.itech-bs14.de/enrol/index.php?id=35')
 
 # p 'Add start id'
