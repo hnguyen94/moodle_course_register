@@ -30,11 +30,11 @@ href = links.map do |link|
 end
 
 href.each do |link|
-  course = agent.get(link)
-  check_in_form = course.form(action: 'https://moodle.itech-bs14.de/enrol/index.php')
+  modules = agent.get(link)
+  check_in_form = modules.form(action: 'https://moodle.itech-bs14.de/enrol/index.php')
 
   if !check_in_form.nil?
-    return check_in_form.submit if course.search('.fstatic').count != 0
+    return check_in_form.submit if modules.search('.fstatic').count != 0
     check_in_form.field_with(name: 'enrolpassword').value = ENV['check_in_password']
     check_in_form.submit
   else
