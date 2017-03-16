@@ -11,7 +11,7 @@ agent.user_agent_alias = 'Mac Safari'
 cookies_file = 'cookies.yml'
 
 if File.exist? cookies_file
-  agent.cookie_jar.load(cookies_file)
+  agent.cookie_jar.load cookies_file
 else
   login_page = agent.get('https://moodle.itech-bs14.de/login/index.php')
   login_form = login_page.form(action: 'https://moodle.itech-bs14.de/login/index.php')
