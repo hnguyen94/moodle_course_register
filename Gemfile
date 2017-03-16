@@ -2,6 +2,7 @@
 source 'https://rubygems.org'
 
 gem 'mechanize'
+gem 'ruby-progressbar'
 
 group :development, :test do
   gem 'awesome_print'
