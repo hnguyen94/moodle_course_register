@@ -10,6 +10,8 @@ group :development, :test do
   # pry plugins
   gem 'pry'
   gem 'pry-byebug'
+  gem 'pry-coolline'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
+  gem 'pry-toys'
 end
