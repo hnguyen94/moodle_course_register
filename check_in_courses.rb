@@ -10,8 +10,8 @@ agent.user_agent_alias = 'Mac Safari'
 # Log in
 cookies_file = 'cookies.yml'
 
-if File.exist? 'cookies.yaml'
-  agent.cookie_jar.load('cookies.yaml')
+if File.exist? cookies_file
+  agent.cookie_jar.load(cookies_file)
 else
   login_page = agent.get('https://moodle.itech-bs14.de/login/index.php')
   login_form = login_page.form(action: 'https://moodle.itech-bs14.de/login/index.php')
@@ -40,6 +40,7 @@ href.each do |link|
     check_in_form.submit
   else
     next
+    p 'Already checked in'
   end
 end
 
