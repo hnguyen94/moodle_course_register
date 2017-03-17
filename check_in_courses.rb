@@ -3,6 +3,7 @@ require 'pry'
 require 'pry-byebug'
 require 'mechanize'
 require 'dotenv/load'
+require './it5l.rb'
 
 agent = Mechanize.new
 agent.user_agent_alias = 'Mac Safari'
@@ -39,7 +40,6 @@ href.each do |link|
     check_in_form.field_with(name: 'enrolpassword').value = ENV['check_in_password']
     check_in_form.submit
   else
-    p 'Already checked in'
     next
   end
 end
